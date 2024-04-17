@@ -9,22 +9,22 @@ const puppeteer = require('puppeteer');
   await page.setViewport({ width: 1280, height: 800 });
   
   try {
-    // Abre a página do Indeed
+    // Abre a página do Indeed (teste)
     await page.goto('https://br.indeed.com/', { waitUntil: 'networkidle2' });
   
-    // Aguarda até que um seletor específico esteja disponível na página
-    
     // Preenche o campo de busca com "Analista"
     await page.type('#text-input-what', 'Analista');
     
     // Clica no botão de pesquisa
     await page.click('.yosegi-InlineWhatWhere-primaryButton');
+
+    // Aguarda até que um seletor específico esteja disponível na página
     await page.waitForSelector('#gnav-footer-container');
     
     // Captura o conteúdo HTML da página
     const content = await page.content();
     
-    // Agora você pode fazer o que quiser com o conteúdo, como armazená-lo em uma variável ou escrevê-lo em um arquivo
+    // Agora você pode fazer o que quiser com o conteúdo, como armazená-lo em uma variável ou escrevê-lo em um arquivo:
    
     // Escreve o conteúdo HTML em um arquivo PDF
     await page.pdf({ path: 'resultado.pdf', format: 'A4' });   
